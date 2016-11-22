@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 CC = gcc
+NAME = libft.a
 FLAGS = -Wall -Werror -Wextra
 SOURCES = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 			ft_itoa.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c \
@@ -23,7 +24,7 @@ SOURCES = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigi
 			ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 			ft_lstrev.c ft_lstsort.c ft_lstsize.c ft_lstforeach.c ft_lstmerge.c ft_lstrmif.c
 OBJECTS = $(SOURCES:.c=.o)
-NAME = libft.a
+LIB_NAME = $(NAME:.a=.h)
 
 all: $(NAME)
 
@@ -33,7 +34,7 @@ $(NAME): $(OBJECTS)
 	@echo "\033[0;32mSuccess: \033[0mmake done"
 
 %.o: %.c
-	@$(CC) $(FLAGS) -c -o $@ $<
+	@$(CC) $(FLAGS) -I $(LIB_NAME) -c -o $@ $<
 
 clean:
 	@rm -f $(OBJECTS)
