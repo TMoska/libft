@@ -6,7 +6,7 @@
 #    By: tmoska <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 15:11:22 by tmoska            #+#    #+#              #
-#    Updated: 2016/11/22 15:19:59 by tmoska           ###   ########.fr        #
+#    Updated: 2016/11/22 15:33:14 by tmoska           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,17 +28,18 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+	@echo "\033[0;32mSuccess: \033[0mmake done"
 
-$(OBJECTS):
-	$(CC) -c $(FLAGS) $(SOURCES)
+%.o: %.c
+	@$(CC) $(FLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OBJECTS)
-	find . -name "*~" -name "*.swp" -delete
+	@rm -f $(OBJECTS)
+	@find . -name "*~" -name "*.swp" -delete
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
