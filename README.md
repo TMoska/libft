@@ -1,4 +1,4 @@
-Libft - TMoska
+Libft - TMoska [![Buld Status](https://travis-ci.org/TMoska/libft.svg)](https://travis-ci.org/TMoska/libft.svg?branch=master)
 ===
 
 Personal library of re-created libc functions and some additional ones that help in everyday developement with C.

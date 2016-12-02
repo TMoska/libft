@@ -25,13 +25,6 @@ SOURCES = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigi
 			ft_lstrev.c ft_lstsort.c ft_lstsize.c ft_lstforeach.c ft_lstmerge.c ft_lstrmif.c
 OBJECTS = $(SOURCES:.c=.o)
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Darwin)
-	SHELL = /bin/zsh
-else
-	SHELL = /bin/bash
-endif
-
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
