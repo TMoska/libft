@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 CC = gcc
+FLAGS = -Wall -Werror -Wextra -I./includes
 NAME = libft.a
-FLAGS = -Wall -Werror -Wextra
 SOURCES = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 			ft_itoa.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c \
 			ft_lstnew.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
@@ -24,21 +24,21 @@ SOURCES = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigi
 			ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 			ft_lstrev.c ft_lstsort.c ft_lstsize.c ft_lstforeach.c ft_lstmerge.c ft_lstrmif.c
 OBJECTS = $(SOURCES:.c=.o)
-LIB_NAME = $(NAME:.a=.h)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
-	@echo "\033[0;32mSuccess: \033[0mmake done"
+	@echo "\n\033[0;32mSuccess: \033[0mmake done"
 
 %.o: %.c
-	@$(CC) $(FLAGS) -I $(LIB_NAME) -c -o $@ $<
+	@/bin/echo -n "."
+	@$(CC) $(FLAGS) -c -o $@ $<
 
 clean:
 	@rm -f $(OBJECTS)
-	@find . -name "*~" -name "*.swp" -delete
+	@find . \( -name "*~" -o -name "*.swp" -o -name ".DS_Store" \) -delete
 
 fclean: clean
 	@rm -f $(NAME)
