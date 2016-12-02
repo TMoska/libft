@@ -13,7 +13,11 @@ git clone https://github.com/TMoska/libft.git
 cd libft
 make
 ```
+Add this line to your C code:
 
+```C
+#include "libft.h"
+```
 Contributing
 ---
 
