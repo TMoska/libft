@@ -35,19 +35,19 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strstr(const char *big, const char *little);
-char				*ft_strnstr(const char *big,
+char				*ft_strnstr(const char *big, \
 					const char *little, size_t len);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strdup(char *src);
 char				*ft_strcat(char *restrict s1, const char *restrict s2);
-char				*ft_strncat(char *restrict s1,
+char				*ft_strncat(char *restrict s1, \
 					const char *restrict s2, size_t n);
-size_t				ft_strlcat(char *restrict dst, const char *restrict src,
+size_t				ft_strlcat(char *restrict dst, const char *restrict src, \
 					size_t size);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
-void				*ft_memcpy(void *restrict dst,
+void				*ft_memcpy(void *restrict dst, \
 					const void *restrict src, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -74,7 +74,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-void				*ft_memccpy(void *restrict dst,
+void				*ft_memccpy(void *restrict dst, \
 					const void *restrict src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 char				*ft_strchr(const char *s, int c);
@@ -90,7 +90,7 @@ void				ft_lstsort(t_list **begin_list, int (*cmp)());
 int					ft_lstsize(t_list *begin);
 void				ft_lstforeach(t_list *begin_list, void (*f)(void *));
 void				ft_lstmerge(t_list **begin_list1, t_list *begin_list2);
-void				ft_lstrmif(t_list **begin_list,
+void				ft_lstrmif(t_list **begin_list, \
 					void *data_ref, int (*cmp)());
 char				*ft_itoa(int n);
 #endif
