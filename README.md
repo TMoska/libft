@@ -8,9 +8,11 @@ This projects has been a part of curriculum for [42 University](https://www.42.u
 Using the Library
 ---
 
-  git clone https://github.com/TMoska/libft.git
-  cd libft
-  make
+```
+git clone https://github.com/TMoska/libft.git
+cd libft
+make
+```
 
 Contributing
 ---
