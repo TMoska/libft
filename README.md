@@ -18,6 +18,15 @@ Add this line to your C code:
 ```C
 #include "libft.h"
 ```
+Studying at 42?
+---
+
+You might be interested in checking my other repositories:
+- [42_exams](https://www.github.com/TMoska/42_exams)
+- [sastantua](https://github.com/TMoska/sastantua)
+- [get_next_line](https://github.com/TMoska/get_next_line)
+- [fillit](https://github.com/TMoska/fillit)
+
 Contributing
 ---
 
