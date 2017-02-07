@@ -30,5 +30,7 @@ char	*ft_strtrim(char const *s)
 		str[++i] = '\0';
 		return (ft_strdup(str));
 	}
+	else
+		return (0);
 	return (0);
 }

@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lst_create_elem.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 10:33:10 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/30 17:32:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/09 20:56:57 by tmoska            #+#    #+#             */
+/*   Updated: 2017/01/14 16:50:07 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_putchar_fd(char c, int fd)
+t_list		*ft_lst_create_elem(void *data)
 {
-	write(fd, &c, 1);
+	t_list	*new_list;
+
+	new_list = malloc(sizeof(t_list));
+	new_list->content = data;
+	new_list->next = NULL;
+	return (new_list);
 }

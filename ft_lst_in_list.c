@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lst_in_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 10:33:10 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/30 17:32:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/20 21:14:26 by tmoska            #+#    #+#             */
+/*   Updated: 2017/01/21 14:49:31 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_lst_in_list(t_list *begin_list, void *data, int (*cmp)())
 {
-	write(fd, &c, 1);
+	while (begin_list)
+	{
+		if (cmp(begin_list->content, data))
+			return (1);
+		begin_list = begin_list->next;
+	}
+	return (0);
 }

@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 10:33:10 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/30 17:32:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/22 12:35:39 by moska             #+#    #+#             */
+/*   Updated: 2017/01/22 12:36:05 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int   ft_lstadd_back(t_list **alst, t_list *new)
 {
-	write(fd, &c, 1);
+  t_list  *tmp;
+
+  tmp = *alst;
+  if (!new)
+    return (0);
+  if (*alst)
+  {
+    while (tmp->next)
+      tmp = tmp->next;
+    tmp->next = new;
+  }
+  else
+    ft_lstadd(alst, new);
+  return (1);
 }

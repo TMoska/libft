@@ -1,18 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_get_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 10:33:10 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/30 17:32:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/13 23:24:14 by moska             #+#    #+#             */
+/*   Updated: 2017/01/30 17:32:39 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char		*ft_get_path(char *folder_name)
 {
-	write(fd, &c, 1);
+	char	*start;
+	char	*start_tmp;
+	char	*tmp;
+
+	tmp = NULL;
+	start = ft_strdup(folder_name);
+	start_tmp = start;
+	while (*start_tmp != '\0')
+	{
+		if (*start_tmp == '/')
+			tmp = start_tmp;
+		start_tmp++;
+	}
+	if (tmp)
+		*tmp = '\0';
+	else
+	{
+		free(start);
+		return (ft_strdup("."));
+	}
+	return (start);
 }

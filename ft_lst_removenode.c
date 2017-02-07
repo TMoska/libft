@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lst_removenode.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 10:33:10 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/30 17:32:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/12 18:11:17 by moska             #+#    #+#             */
+/*   Updated: 2017/01/26 17:55:50 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_putchar_fd(char c, int fd)
+void		ft_lst_removenode(t_list **begin_list, t_list *removable)
 {
-	write(fd, &c, 1);
+	t_list	*next;
+
+	if (begin_list && *begin_list && removable)
+	{
+		if (*begin_list == removable)
+		{
+			next = (*begin_list)->next;
+			ft_lstdelone(begin_list, &ft_lst_clear);
+			*begin_list = next;
+		}
+		else
+			ft_lst_removenode(&((*begin_list)->next), removable);
+	}
 }

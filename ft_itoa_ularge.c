@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_ularge.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 13:13:14 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/21 16:13:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/18 18:25:35 by moska             #+#    #+#             */
+/*   Updated: 2017/01/19 01:08:55 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+static void	do_chars(char *first, char *now, unsigned long long number)
 {
-	t_list	*list;
-
-	list = (t_list *)ft_memalloc(sizeof(*list));
-	if (!list)
-		return (NULL);
-	if (content)
+	while (now >= first)
 	{
-		if ((list->content = malloc(content_size)))
-			ft_memcpy(list->content, content, content_size);
-		else
-			return (NULL);
-		list->content_size = content_size;
+		*now = number % 10 + '0';
+		number /= 10;
+		now--;
 	}
-	list->next = NULL;
-	return (list);
+}
+
+char		*ft_itoa_ularge(unsigned long long number)
+{
+	char	*new;
+	int		length;
+
+	if (number == 0)
+		return (ft_strdup("0"));
+	length = ft_count_umax_digits(number);
+	new = malloc(sizeof(char*) * (length + 1));
+	do_chars(new, new + length - 1, number);
+	new[length] = '\0';
+	return (new);
 }

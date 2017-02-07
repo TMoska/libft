@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_basename.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 10:33:10 by tmoska            #+#    #+#             */
-/*   Updated: 2017/01/30 17:32:34 by moska            ###   ########.fr       */
+/*   Created: 2017/01/13 23:28:20 by moska             #+#    #+#             */
+/*   Updated: 2017/01/14 16:46:47 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char		*ft_basename(char *folder_name)
 {
-	write(fd, &c, 1);
+	char		*start;
+
+	if (ft_strequ(folder_name, "/"))
+		return (folder_name);
+	start = ft_strchr(folder_name, '\0');
+	while (start > folder_name && *(start - 1) != '/')
+		start--;
+	return (start);
 }
