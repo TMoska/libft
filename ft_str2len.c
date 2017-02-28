@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_clear.c                                     :+:      :+:    :+:   */
+/*   ft_str2len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 23:23:40 by moska             #+#    #+#             */
-/*   Updated: 2017/02/17 16:03:24 by tmoska           ###   ########.fr       */
+/*   Created: 2017/02/17 12:14:20 by moska             #+#    #+#             */
+/*   Updated: 2017/02/17 15:59:03 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_clear(void **list_content, size_t *content_size)
+size_t	ft_str2len(char **tab)
 {
-	if (list_content)
-		ft_memdel((void**)&(*list_content));
-	(void)content_size;
+	size_t i;
+
+	i = 0;
+	if (!tab)
+		return (0);
+	while (tab[i])
+		i++;
+	return (i);
 }

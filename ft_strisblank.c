@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_clear.c                                     :+:      :+:    :+:   */
+/*   ft_strisblank.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 23:23:40 by moska             #+#    #+#             */
-/*   Updated: 2017/02/17 16:03:24 by tmoska           ###   ########.fr       */
+/*   Created: 2017/02/08 22:58:02 by moska             #+#    #+#             */
+/*   Updated: 2017/02/17 15:58:36 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_clear(void **list_content, size_t *content_size)
+int	ft_strisblank(char *str)
 {
-	if (list_content)
-		ft_memdel((void**)&(*list_content));
-	(void)content_size;
+	while (*str)
+	{
+		if (((int)(*str) == 9) || ((int)(*str) == 32))
+			str++;
+		else
+			return (0);
+	}
+	return (1);
 }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_clear.c                                     :+:      :+:    :+:   */
+/*   ft_str2new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 23:23:40 by moska             #+#    #+#             */
-/*   Updated: 2017/02/17 16:03:24 by tmoska           ###   ########.fr       */
+/*   Created: 2017/02/17 18:03:23 by tmoska            #+#    #+#             */
+/*   Updated: 2017/02/17 18:17:20 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_clear(void **list_content, size_t *content_size)
+char	**ft_str2new(size_t size)
 {
-	if (list_content)
-		ft_memdel((void**)&(*list_content));
-	(void)content_size;
+	char	**str;
+	size_t	i;
+
+	i = 0;
+	if (!(str = (char **)malloc(sizeof(char*) * (size + 1))))
+		return (NULL);
+	str[size] = 0;
+	while (i < size)
+		str[i++] = NULL;
+	return (str);
 }

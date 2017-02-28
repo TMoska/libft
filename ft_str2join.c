@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_str2join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoska <tmoska@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 07:18:37 by tmoska            #+#    #+#             */
-/*   Updated: 2017/02/28 15:16:04 by tmoska           ###   ########.fr       */
+/*   Created: 2017/02/22 19:20:31 by tmoska            #+#    #+#             */
+/*   Updated: 2017/02/22 21:07:12 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	**ft_str2join(char **s1, char **s2)
 {
-	char	*string;
+	size_t	size1;
+	size_t	size2;
+	char	**new;
+	int		i;
+	int		a;
 
-	if (!s || !(string = ft_strnew(len)))
-		return (0);
-	ft_strncpy(string, &s[start], len);
-	return (string);
+	i = 0;
+	a = 0;
+	size1 = ft_str2len(s1);
+	size2 = ft_str2len(s2);
+	new = ft_str2new(size1 + size2);
+	while (s1 && s1[a])
+	{
+		new[i] = ft_strdup(s1[a]);
+		i++;
+		a++;
+	}
+	a = 0;
+	while (s2 && s2[a])
+	{
+		new[i] = ft_strdup(s2[a]);
+		i++;
+		a++;
+	}
+	return (new);
 }

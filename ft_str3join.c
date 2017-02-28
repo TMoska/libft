@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_clear.c                                     :+:      :+:    :+:   */
+/*   ft_str3join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 23:23:40 by moska             #+#    #+#             */
-/*   Updated: 2017/02/17 16:03:24 by tmoska           ###   ########.fr       */
+/*   Created: 2017/02/18 16:18:47 by tmoska            #+#    #+#             */
+/*   Updated: 2017/02/22 21:08:09 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_clear(void **list_content, size_t *content_size)
+char	*ft_str3join(char *s1, char *s2, char *s3)
 {
-	if (list_content)
-		ft_memdel((void**)&(*list_content));
-	(void)content_size;
+	char	*result;
+	int		length;
+	int		i;
+
+	i = 0;
+	length = ft_strlen(s1) + ft_strlen(s2) + ft_strlen(s3);
+	if ((result = ft_strnew(length)))
+	{
+		while (s1 && *s1)
+			result[i++] = *s1++;
+		while (s2 && *s2)
+			result[i++] = *s2++;
+		while (s3 && *s3)
+			result[i++] = *s3++;
+		return (result);
+	}
+	else
+		return (NULL);
 }

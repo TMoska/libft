@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 16:23:21 by tmoska            #+#    #+#             */
-/*   Updated: 2017/02/22 21:08:35 by tmoska           ###   ########.fr       */
+/*   Created: 2017/02/23 23:01:00 by tmoska            #+#    #+#             */
+/*   Updated: 2017/02/24 08:10:42 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strtrim_char(char const *s, char c)
 {
-	const char *s;
+	char	*res;
+	size_t	beg;
+	size_t	end;
 
-	if (!str)
+	if (!s)
 		return (0);
-	s = str;
-	while (*s)
-		++s;
-	return (s - str);
+	beg = 0;
+	end = 0;
+	end = ft_strlen(s);
+	while (s[beg] == ' ' || s[beg] == '\n' || s[beg] == '\t' || s[beg] == c)
+		beg++;
+	while (s[end - 1] == ' ' || s[end - 1] == '\n' || s[end - 1] == '\t' ||
+		s[end - 1] == c)
+		end--;
+	if ((res = ft_strncpy(ft_strnew(end - beg), &s[beg], end - beg)))
+		return (res);
+	return (NULL);
 }

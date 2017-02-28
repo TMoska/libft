@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tmoska <tmoska@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 09:18:00 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/18 14:52:07 by tmoska           ###   ########.fr       */
+/*   Updated: 2017/02/19 23:05:02 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 static int	word_count(char const *s, char c)
@@ -36,83 +37,31 @@ static int	word_count(char const *s, char c)
 	return (wc);
 }
 
-static void	skip_separator(char *s, int *i, char c)
-{
-	while (s[*i] == c)
-		*i = *i + 1;
-}
-
-static char	**allocate_word_memory(char **table, char *s, char c)
-{
-	int	i;
-	int	b;
-	int	d;
-
-	i = 0;
-	b = 0;
-	d = 0;
-	skip_separator(s, &i, c);
-	while (s[i] != '\0')
-	{
-		i++;
-		if (s[i] == c || s[i] == '\0')
-		{
-			if ((table[b] = (char *)malloc(sizeof(char) * (d + 1))))
-			{
-				b++;
-				d = 0;
-				skip_separator(s, &i, c);
-			}
-			else
-				return (0);
-		}
-		d++;
-	}
-	return (table);
-}
-
-static char	**allocate_words(char **table, char *s, char d)
-{
-	int	i;
-	int	b;
-	int	c;
-
-	i = 0;
-	b = 0;
-	c = 0;
-	skip_separator(s, &i, d);
-	while (s[i] != '\0')
-	{
-		table[b][c] = s[i];
-		i++;
-		c++;
-		if (s[i] == d)
-		{
-			table[b][c] = '\0';
-			b++;
-			c = 0;
-			skip_separator(s, &i, d);
-		}
-	}
-	return (table);
-}
-
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**table;
 	int		size;
+	int		i;
+	int		substr_len;
 
 	if (!s)
 		return (0);
 	size = word_count(s, c);
-	if ((table = (char **)malloc(sizeof(*table) * (size + 1))))
+	substr_len = 0;
+	i = 0;
+	if (!(table = (char **)malloc((sizeof(char *) * size + 1))))
+		return (NULL);
+	while (size--)
 	{
-		table[size] = 0;
-		table = allocate_word_memory(table, (char *)s, c);
-		table = allocate_words(table, (char *)s, c);
-		return (table);
+		while (*s == c && *s != '\0')
+			s++;
+		substr_len = ft_strlen_until(s, c);
+		table[i] = ft_strncpy(ft_strnew(substr_len), s, substr_len);
+		if (!table[i])
+			return (NULL);
+		s += substr_len;
+		i++;
 	}
-	else
-		return (0);
-	return (0);
+	table[i] = NULL;
+	return (table);
 }
